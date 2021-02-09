@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
+    String backdropPath;
     String posterPath;
     String title;
     String overview;
@@ -16,6 +17,7 @@ public class Movie {
         posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        backdropPath = jsonObject.getString("backdrop_path");
     }
 
     public static List<Movie> fromJSONArray(JSONArray movieJsonArray) throws JSONException {
@@ -38,5 +40,9 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 }
